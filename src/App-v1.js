@@ -7,15 +7,6 @@ const messages = [
 ];
 
 export default function App() {
-  return (
-    <div>
-      <Step />
-      {/* <Step /> */}
-    </div>
-  );
-}
-
-function Step() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
 
@@ -45,44 +36,25 @@ function Step() {
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
 
-          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
-
+          <p className="message">
+            Step {step}: {messages[step - 1]}
+          </p>
           <div className="buttons">
-            <Button
-              bgColor="#7950f2"
-              color="#fff"
-              HandleOnClick={handlePrevious}
+            <button
+              style={{ background: "#7950f2", color: "#fff" }}
+              onClick={handlePrevious}
             >
-              {/* 開始標籤與結束標籤間的值會當成 children prop 傳到 Button Component 中 */}
-              <span>👈</span>Previous
-            </Button>
-
-            <Button bgColor="#7950f2" color="#fff" HandleOnClick={handleNext}>
-              Next<span>👉</span>
-            </Button>
+              Previous
+            </button>
+            <button
+              style={{ background: "#7950f2", color: "#fff" }}
+              onClick={handleNext}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-function StepMessage({ step, children }) {
-  return (
-    <div className="message">
-      <h3>Step {step} </h3>
-      {children}
-    </div>
-  );
-}
-
-function Button({ bgColor, color, HandleOnClick, children }) {
-  return (
-    <button
-      style={{ background: bgColor, color: color }}
-      onClick={HandleOnClick}
-    >
-      {children}
-    </button>
   );
 }

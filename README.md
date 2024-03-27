@@ -1,5 +1,5 @@
 # steps
-Side Project(React) - Build a web application with State and Event
+React Practice - Build a web application with State and Event
 
 ---
 
